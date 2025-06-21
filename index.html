@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fortnite Battle Pass GUI</title>
+  <style>
+    body {
+      background: url('background.gif') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial Black', sans-serif;
+      color: white;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00ffff;
+      margin-bottom: 40px;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .tiers-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .tier-card {
+      background: rgba(30, 30, 46, 0.9);
+      border: 2px solid #00ffff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 0 10px #00ffff66;
+      backdrop-filter: blur(4px);
+    }
+
+    .tier-card h2 {
+      margin: 0 0 10px;
+      color: #ffd700;
+    }
+
+    .reward {
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #292944;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reward img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .free { color: #00ff99; }
+    .premium { color: #ff66cc; }
+
+    .xp-bar {
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 10px;
+      margin-top: 10px;
+    }
+
+    .xp-fill {
+      background: linear-gradient(to right, #00ffff, #00ff99);
+      height: 100%;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #ccc;
+      text-shadow: 1px 1px 2px #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fortnite Battle Pass - 30 Tiers</h1>
+  <div class="tiers-container" id="tiers-container"></div>
+
+  <div class="footer">
+    Made by Velican ⚔️ | Customizable GUI
+  </div>
+
+  <script>
+    const container = document.getElementById('tiers-container');
+    for (let i = 1; i <= 30; i++) {
+      const tier = document.createElement('div');
+      tier.className = 'tier-card';
+
+      const xpPercent = Math.floor(Math.random() * 100) + 1;
+
+      tier.innerHTML = `
+        <h2>Tier ${i}</h2>
+        <div class="reward free">
+          <img src="vbucks.png" alt="Free Reward">
+          Free Reward: 100 V-Bucks
+        </div>
+        <div class="reward premium">
+          <img src="skin.png" alt="Premium Reward">
+          Premium Reward: Epic Skin ${i}
+        </div>
+        <div class="xp-bar">
+          <div class="xp-fill" style="width: ${xpPercent}%"></div>
+        </div>
+      `;
+      container.appendChild(tier);
+    }
+  </script>
+</body>
+</html>
